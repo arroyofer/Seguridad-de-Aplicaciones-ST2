@@ -1009,7 +1009,13 @@
             "target": {
               "cell": "07e6d47f-0eec-4f94-a7e6-53fb39e27191",
               "port": "d923140f-a6a9-4424-9f3c-a499a28a6a9a"
-            }
+            },
+            "vertices": [
+              {
+                "x": 690,
+                "y": 290
+              }
+            ]
           },
           {
             "shape": "flow",
@@ -1282,6 +1288,11 @@
             ],
             "tools": {
               "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
                 "boundary",
                 "button-remove",
                 "vertices",
