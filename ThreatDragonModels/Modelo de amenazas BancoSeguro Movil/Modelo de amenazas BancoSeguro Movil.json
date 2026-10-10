@@ -337,8 +337,8 @@
                 "text": "P1 Autenticacion \ny API Gateway"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -435,12 +435,60 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "e4699979-fb0e-4c7a-9eee-920b87dbdc26",
+                  "title": "T1 Suplantacion por credential stuffing / SIM swap",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Impacto: Alto | Probabilidad: Alta. Un atacante usa credenciales filtradas o clona la SIM para interceptar el OTP por SMS y suplantar al cliente.",
+                  "mitigation": "MFA resistente a phishing (TOTP en app o push con biometria en lugar de SMS), deteccion de dispositivo nuevo, rate limiting y bloqueo progresivo, y verificacion de contrasenas contra listas filtradas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                },
+                {
+                  "id": "9d80402b-18b6-4d54-8f57-d40686847d28",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": true,
+                  "number": 4,
+                  "score": ""
+                },
+                {
+                  "id": "98573129-1e18-489d-a9c2-9f6a9c052691",
+                  "title": "T5 DoS en login y envio de OTP",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "Impacto: Medio | Probabilidad: Alta. Una inundacion de peticiones al login o abuso del envio de OTP agota recursos y bloquea cuentas legitimas.",
+                  "mitigation": "Rate limiting y CAPTCHA adaptativo.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -457,8 +505,8 @@
                 "text": "P2 Servicio de \nTransferencias"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -555,12 +603,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "e9972908-e2ef-4f0c-8d4a-36ec93f4744b",
+                  "title": "T3 Repudio de transferencias",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Impacto: Medio | Probabilidad: Media. El cliente niega haber hecho una transferencia y los logs no vinculan usuario, dispositivo, IP y fecha de forma inalterable.",
+                  "mitigation": "Bitacora de auditoria inalterable con usuario, dispositivo, IP y timestamp.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -577,8 +647,8 @@
                 "text": "P3 Servicio de \nConsulta \nde Cuentas"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -675,12 +745,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "683a38f6-38d2-4b15-96e5-2ffe2bb6cfd0",
+                  "title": "T6 IDOR/BOLA en consulta de cuentas",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Impacto: Alto | Probabilidad: Alta. Al cambiar el accountId en la peticion, un usuario accede a cuentas de otros clientes.",
+                  "mitigation": "Autorizacion en el servidor en cada peticion verificando que la cuenta pertenece al usuario del token, identificadores no predecibles (UUID), pruebas automatizadas de autorizacion y registro de accesos denegados.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -697,11 +789,13 @@
                 "text": "DS1 Base de datos\n bancaria"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -798,13 +892,33 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "73fe0b22-40ee-4eb3-9a63-11c93ff1a511",
+                  "title": "T4 Fuga por inyeccion SQL o respaldos sin cifrar",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Impacto: Alto | Probabilidad: Media. Una inyeccion SQL o un respaldo sin cifrar expone saldos, datos personales y hashes.",
+                  "mitigation": "Consultas parametrizadas, usuario de BD con minimo privilegio, cifrado en reposo (AES-256) con llaves en HSM/KMS y segmentacion para que DS1 solo acepte trafico de P1, P2 y P3.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -860,52 +974,6 @@
                 "y": 234
               }
             ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Instruccion de pago",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "Instruccion de pago"
-            ],
-            "id": "b934b66b-440f-4415-8047-4f2f21d216e7",
-            "source": {
-              "x": 628,
-              "y": 68
-            },
-            "target": {
-              "cell": "53285f28-dfa9-4e95-aed3-dc772260adcb",
-              "port": "b5e9a7ff-5954-43e6-b499-4b6868f3f070"
-            }
           },
           {
             "shape": "flow",
@@ -1135,11 +1203,11 @@
             },
             "width": 200,
             "height": 100,
-            "zIndex": 11,
+            "zIndex": 10,
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "\n\n F2 Token \nJWT",
+              "name": "Instruccion de pago",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1150,9 +1218,81 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Instruccion de pago"
+            ],
+            "id": "b934b66b-440f-4415-8047-4f2f21d216e7",
+            "source": {
+              "x": 628,
+              "y": 68
+            },
+            "target": {
+              "cell": "53285f28-dfa9-4e95-aed3-dc772260adcb",
+              "port": "b5e9a7ff-5954-43e6-b499-4b6868f3f070"
+            },
+            "vertices": [
+              {
+                "x": 770,
+                "y": 68
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 11,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "\n\n F2 Token \nJWT",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "d853162c-bb69-47de-b030-6d2f58d94397",
+                  "title": "Robo del JWT",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Impacto: Medio | Probabilidad: Media. El token se guarda en almacenamiento inseguro o aparece en logs, y se reutiliza.",
+                  "mitigation": "Almacenamiento seguro (Keychain/Keystore), tokens de vida corta y no registrarlos en logs.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 12,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [
                 "59be4186-aea2-40bd-9e71-117f4038808c"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "\n\n F2 Token \nJWT"
@@ -1177,7 +1317,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1198,15 +1339,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "b89ca1da-7b10-43ec-ac61-98a9e349bfa4",
+                  "title": "T2 Alteracion de destino o monto",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Impacto: Alto | Probabilidad: Media. Un atacante con MITM o con una app modificada cambia la cuenta destino o el monto, al no haber certificate pinning ni firma de la transaccion.",
+                  "mitigation": "TLS 1.3 con certificate pinning, firma de transacciones (hash de monto + destino validado en el servidor) y segundo factor para transferencias a cuentas nuevas.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ],
               "trustBoundaryIds": [
                 "9f55ae08-8edf-49e4-ad08-9344807f7498"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Solicitud de \ntransferencia"
@@ -1224,6 +1384,14 @@
               {
                 "x": 230,
                 "y": 130
+              },
+              {
+                "x": 250,
+                "y": 110
+              },
+              {
+                "x": 430,
+                "y": 110
               }
             ]
           },
@@ -1285,87 +1453,7 @@
                 "x": 740,
                 "y": 340
               }
-            ],
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead",
-                "boundary",
-                "button-remove",
-                "vertices",
-                "source-arrowhead",
-                "target-arrowhead"
-              ],
-              "name": null
-            }
+            ]
           }
         ],
         "description": "App Banca"
@@ -1373,6 +1461,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 2
+    "threatTop": 12
   }
 }
